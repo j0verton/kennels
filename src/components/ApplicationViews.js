@@ -6,7 +6,7 @@ import { EmployeeCard } from "./employee/Employee"
 import { LocationCard } from "./location/Location"
 import { CustomerCard } from "./customer/Customer"
 
-export const ApplicationViews = (props) => {
+export const ApplicationViews = () => {
     return (
         <>
             {/* Render the location list when http://localhost:3000/ */}
