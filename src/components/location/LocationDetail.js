@@ -28,7 +28,7 @@ export const LocationDetail = () => {
             <h4>Employees</h4>
             {
                 location.employees?.map(employee=>{
-			        return <div className="location__employee">Employee: <Link to={`/employees/detail/${employee.id}`}>
+			        return <div className="location__employee" key={employee.id}>Employee: <Link to={`/employees/detail/${employee.id}`}>
                     { employee.name }
             </Link></div>
                 })
@@ -36,12 +36,12 @@ export const LocationDetail = () => {
 			<h4>Current Residents</h4>
             {
                 location.animals?.map(animal=>{
-                    return <div className="location__animal">Animal: <Link to={`/animals/detail/${animal.id}`}>
+                    return <div className="location__animal" key={animal.id}>Animal: <Link to={`/animals/detail/${animal.id}`}>
                     { animal.name }
                 </Link></div>
                 })
             }
-            			<button onClick={
+            <button onClick={
                 () => {
                     closeLocation(location.id)
                         .then(() => {

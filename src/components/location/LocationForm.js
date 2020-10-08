@@ -7,8 +7,6 @@ import { useHistory, useParams } from 'react-router-dom';
 
 export const LocationForm = () => {
     const { addLocation, getLocationById, updateLocation } = useContext(LocationContext)
-    const { animals, getAnimals } = useContext(AnimalContext)
-    const { employees, getEmployeess } = useContext(CustomerContext)
 
     //for edit, hold on to state of animal in this view
     const [location, setLocation] = useState({})
@@ -36,36 +34,31 @@ export const LocationForm = () => {
             }
     }, [])
 
-    // const constructLocationObject = () => {
-    //     if (parseInt(animal.locationId) === 0) {
-    //         window.alert("Please select a location")
-    //     } else {
-    //         //disable the button - no extra clicks
-    //         setIsLoading(true);
-    //         if (animalId){
-    //             //PUT - update
-    //             updateLocation({
-    //                 id: animal.id,
-    //                 name: animal.name,
-    //                 locationId: parseInt(animal.locationId),
-    //                 customerId: parseInt(animal.customerId)
-    //             })
-    //             .then(() => history.push(`/animals/detail/${animal.id}`))
-    //         }else {
-    //             //POST - add
-    //             addAnimal({
-    //                 name: animal.name,
-    //                 locationId: parseInt(animal.locationId),
-    //                 customerId: parseInt(animal.customerId)
-    //             })
-    //             .then(() => history.push("/animals"))
-    //         }
-    //     }
-    // }
+    const constructLocationObject = () => {
+            //disable the button - no extra clicks
+        setIsLoading(true);
+        if (locationId){
+            //PUT - update
+            updateLocation({
+                id: location.id,
+                name: location.name,
+                address: location.address
+            })
+            .then(() => history.push(`/location/detail/${location.id}`))
+        }else {
+            //POST - add
+            addLocation({
+                name: location.name,
+                address: parseInt(location.address)
+            })
+            .then(() => history.push("/locations"))
+
+        }
+    }
     
     return (
         <form className="locationForm">
-            <h2 className="LocationForm__title">New Location</h2>
+            <h2 className="LocationForm__title">{locationId ? `Edit ${location.name}` : "New Location"}</h2>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="locationName">Location name: </label>
@@ -81,7 +74,7 @@ export const LocationForm = () => {
                     <input type="text" id="locationAddress" name="address" required autoFocus className="form-control" 
                     placeholder="Location address" 
                     onChange={handleControlledInputChange} 
-                    defaultValue={location.name}/>
+                    defaultValue={location.address}/>
                 </div>
             </fieldset>
             <button className="btn btn-primary"
@@ -90,7 +83,7 @@ export const LocationForm = () => {
                     event.preventDefault() // Prevent browser from submitting the form
                     constructLocationObject()
                 }}>
-            {animalId ? <>Save Location</> : <>Add Location</>}</button>
+            {locationId ? <>Save Location</> : <>Add Location</>}</button>
         </form>
     )
 }
