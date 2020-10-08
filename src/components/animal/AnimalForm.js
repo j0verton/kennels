@@ -45,7 +45,6 @@ export const AnimalForm = (props) => {
             addAnimal({
                 name: name.current.value,
                 locationId,
-                customerId
             })
             .then(() => history.push("/animals"))
         }
