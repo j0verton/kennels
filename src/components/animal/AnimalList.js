@@ -24,9 +24,9 @@ export const AnimalList = () => {
             Add Animal
         	</button>
             {
-			animals.map(animal => {
-				return <AnimalCard key={animal.id} animal={animal} />
-			})
+              animals.map(animal => {
+                return <AnimalCard key={animal.id} animal={animal} />
+              })
             }
         </div>
     )
