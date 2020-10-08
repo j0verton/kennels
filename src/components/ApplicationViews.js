@@ -15,6 +15,7 @@ import { EmployeeDetail } from "./employee/EmployeeDetail"
 import { LocationDetail } from "./location/LocationDetail"
 import { EmployeeForm } from "./employee/EmployeeForm"
 import { LocationForm } from "./location/LocationForm"
+import { AnimalSearch } from "./animal/AnimalSearch"
 
 export const ApplicationViews = () => {
     return (
@@ -27,6 +28,7 @@ export const ApplicationViews = () => {
             {/* Render the animal list when http://localhost:3000/animals */}
             <AnimalProvider>
                 <Route exact path="/animals">
+                    <AnimalSearch />
                     <AnimalList />
                 </Route>
             </AnimalProvider>

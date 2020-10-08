@@ -67,13 +67,13 @@ export const EmployeeForm = (props) => {
                     <input type="text" id="employeeName" name="name" required autoFocus className="form-control" 
                     placeholder="Employee name" 
                     onChange={handleControlledInputChange}
-                    defaulValue={employee.name}/>
+                    defaultValue={employee.name}/>
                 </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="location">Assign to location: </label>
-                    <select defaultValue={employee.locationID} name="location" id="employeeLocation" className="form-control"  
+                    <select value={employee.locationId} name="location" id="employeeLocation" className="form-control"  
                     onChange={handleControlledInputChange}>
                         <option value="0">Select a location</option>
                         {locations.map(l => (
